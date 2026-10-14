@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The personal portfolio of Sibongile Khanyisa Ngconde." />
+  <title>Sibongile Khanyisa Ngconde | Personal Portfolio</title>
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f4df91;
+      --gold-deep: #9d7815;
+      --ink: #17130a;
+      --ink-soft: #292315;
+      --cream: #fff9e9;
+      --muted: #e9dcae;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--cream);
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(255, 239, 170, .28), transparent 32%),
+        radial-gradient(ellipse at 90% 85%, rgba(126, 88, 0, .28), transparent 34%),
+        linear-gradient(135deg, #b88b16 0%, #d4af37 42%, #c39a22 100%);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .page-shell { min-height: 100vh; overflow: hidden; }
+    .nav-wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px; padding: 25px 0;
+    }
+    .brand {
+      font-size: .95rem; font-weight: 800; letter-spacing: .08em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 26px; flex-wrap: wrap; }
+    .nav-links a {
+      color: var(--ink); text-decoration: none; font-size: .92rem; font-weight: 650;
+      border-bottom: 2px solid transparent; padding-bottom: 4px;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { border-color: var(--ink); }
+    .hero {
+      width: min(1120px, calc(100% - 40px)); margin: 0 auto;
+      min-height: 610px; display: grid; grid-template-columns: 1.25fr .75fr;
+      align-items: center; gap: 54px; padding: 65px 0 95px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: var(--ink);
+      font-size: .78rem; font-weight: 800; letter-spacing: .19em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 2px; background: var(--ink); }
+    h1 {
+      color: var(--ink); font-size: clamp(3rem, 6.5vw, 5.8rem); line-height: .99;
+      letter-spacing: -.065em; margin: 24px 0;
+    }
+    h1 span { display: block; color: #fff7d7; }
+    .hero-copy { max-width: 600px; color: #261d08; font-size: 1.1rem; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 49px; padding: 12px 21px; border-radius: 999px; text-decoration: none;
+      font-weight: 750; transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px #38270025; }
+    .btn-dark { background: var(--ink); color: var(--cream); border: 2px solid var(--ink); }
+    .btn-outline { color: var(--ink); border: 2px solid var(--ink); background: transparent; }
+    .hero-card {
+      position: relative; min-height: 400px; display: flex; align-items: center; justify-content: center;
+    }
+    .monogram-frame {
+      width: min(340px, 100%); aspect-ratio: 4 / 5; border: 1px solid #fff3c0a8;
+      border-radius: 180px 180px 28px 28px; padding: 14px;
+      background: linear-gradient(145deg, #fff0b84a, #7250002b);
+      box-shadow: 0 30px 80px #4e390a2b;
+      transform: rotate(2deg);
+    }
+    .monogram {
+      height: 100%; border-radius: 170px 170px 20px 20px; border: 1px solid #fff0b87d;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      background: linear-gradient(145deg, #211a0b, #44340f 75%, #17130a);
+      color: var(--gold-light); text-align: center; padding: 24px;
+    }
+    .monogram .initials { font-family: Georgia, serif; font-size: clamp(5rem, 11vw, 8.5rem); line-height: 1; letter-spacing: -.09em; }
+    .monogram .rule { width: 70px; height: 1px; background: var(--gold); margin: 24px 0 16px; }
+    .monogram small { letter-spacing: .22em; text-transform: uppercase; font-size: .67rem; }
+    .orbit { position: absolute; width: 90px; height: 90px; border: 1px solid #fff3c0b3; border-radius: 50%; right: -4px; top: 32px; }
+    .orbit::after { content: "✦"; position: absolute; top: 27px; left: 30px; color: var(--cream); font-size: 1.8rem; }
+    section { scroll-margin-top: 30px; }
+    .dark-panel {
+      background: var(--ink); color: var(--cream); padding: 90px 20px;
+      border-top: 1px solid #fff2bd42; border-bottom: 1px solid #fff2bd42;
+    }
+    .section-inner { width: min(1000px, 100%); margin: 0 auto; }
+    .section-kicker { color: var(--gold-light); font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.045em; line-height: 1.1; margin: 12px 0 22px; }
+    .about-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
+    .about-mark { font: 5rem/1 Georgia, serif; color: var(--gold); opacity: .95; }
+    .about-text { color: #e7dfca; font-size: 1.08rem; max-width: 670px; margin: 0; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+    .value-card {
+      border: 1px solid #d4af374d; border-radius: 16px; padding: 22px;
+      background: linear-gradient(145deg, #ffffff08, #d4af3708);
+    }
+    .value-card .number { color: var(--gold-light); font: 1.5rem Georgia, serif; }
+    .value-card h3 { margin: 12px 0 7px; font-size: 1.05rem; }
+    .value-card p { color: #cfc5ad; margin: 0; font-size: .94rem; }
+    .contact-section { padding: 90px 20px 76px; color: var(--ink); }
+    .contact-section .section-kicker { color: #3e2e05; }
+    .contact-lead { max-width: 580px; color: #2c220b; font-size: 1.06rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 34px; }
+    .contact-card {
+      display: flex; align-items: center; gap: 18px; padding: 23px; border-radius: 16px;
+      border: 1px solid #fff1b1b0; background: #fff5d9a8; text-decoration: none;
+      color: var(--ink); min-width: 0; transition: transform .2s ease, background .2s ease;
+    }
+    .contact-card:hover { transform: translateY(-3px); background: #fff9e9; }
+    .contact-icon {
+      flex: 0 0 48px; height: 48px; border-radius: 50%; background: var(--ink);
+      color: var(--gold-light); display: grid; place-items: center; font-size: 1.2rem;
+    }
+    .contact-label { display: block; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+    .contact-value { display: block; font-weight: 750; overflow-wrap: anywhere; }
+    .arrow { margin-left: auto; font-size: 1.3rem; }
+    .certification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
+    .certification-card { border: 1px solid #d4af374d; border-radius: 16px; padding: 25px; background: linear-gradient(145deg, #ffffff08, #d4af3708); }
+    .certification-icon { color: var(--gold-light); font-size: 1.8rem; line-height: 1; margin-bottom: 18px; }
+    .certification-date { color: var(--gold-light); font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .certification-card h3 { margin: 9px 0 4px; font-size: 1.2rem; }
+    .certification-provider { margin: 0 0 12px; color: var(--gold-light); font-weight: 750; }
+    .experience-list { margin-top: 34px; border-left: 1px solid #d4af3770; padding-left: 26px; }
+    .experience-item { display: grid; grid-template-columns: 190px 1fr; gap: 28px; padding: 0 0 30px; position: relative; }
+    .experience-item:last-child { padding-bottom: 0; }
+    .experience-item::before { content: ""; position: absolute; left: -32px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--gold-light); border: 2px solid var(--ink); box-shadow: 0 0 0 1px var(--gold); }
+    .experience-date { color: var(--gold-light); font-size: .9rem; font-weight: 750; }
+    .experience-item h3 { margin: 0 0 3px; font-size: 1.15rem; }
+    .experience-company { color: var(--gold-light); margin: 0 0 8px; font-weight: 700; }
+    .experience-description { color: #cfc5ad; margin: 0; }
+    footer { color: #2c220b; padding: 20px; text-align: center; font-size: .86rem; }
+    footer span { font-weight: 800; }
+    @media (max-width: 760px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 16px; }
+      .hero { grid-template-columns: 1fr; gap: 24px; padding: 55px 0 70px; }
+      .hero-card { min-height: 330px; }
+      .monogram-frame { width: 250px; }
+      .orbit { right: calc(50% - 160px); }
+      .about-grid { grid-template-columns: 1fr; gap: 18px; }
+      .values { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .certification-grid { grid-template-columns: 1fr; }
+      .experience-item { grid-template-columns: 1fr; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="nav-wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#home">SKN<span aria-hidden="true">.</span></a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#strengths">Strengths</a>
+          <a href="#experience">Experience</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div>
+          <div class="eyebrow">Personal Portfolio</div>
+          <h1>Sibongile <span>Khanyisa</span> Ngconde.</h1>
+          <p class="hero-copy">Welcome to my professional space. I value growth, meaningful connections, and bringing purpose and care to every opportunity I take on.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/sibongile-ngconde-51616132b" target="_blank" rel="noopener noreferrer">Visit my LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Gold and black monogram design">
+          <div class="monogram-frame">
+            <div class="monogram">
+              <div class="initials" aria-hidden="true">SN</div>
+              <div class="rule"></div>
+              <small>Sibongile Khanyisa<br/>Ngconde</small>
+            </div>
+          </div>
+          <div class="orbit" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="dark-panel" id="about">
+        <div class="section-inner about-grid">
+          <div>
+            <div class="section-kicker">A little about me</div>
+            <div class="about-mark" aria-hidden="true">“</div>
+          </div>
+          <div>
+            <h2>Purposeful. Professional. Always growing.</h2>
+            <p class="about-text">I’m Sibongile Khanyisa Ngconde, a customer-focused professional with experience in sales, remote customer service, and administrative support. My roles at Cash Crusaders, Property Yans, and Social Justice Coalition strengthened my communication, organisation, and customer support skills. I hold an ALX Africa Virtual Assistant Certificate and have pursued Google AI Essentials training, reflecting my commitment to building practical digital skills and continuing to grow professionally.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dark-panel" id="strengths" style="padding-top: 0; border-top: 0;">
+        <div class="section-inner">
+          <div class="section-kicker">What I bring</div>
+          <h2>Values that guide my work.</h2>
+          <div class="values">
+            <article class="value-card">
+              <div class="number">01</div>
+              <h3>Customer Service & Sales</h3>
+              <p>Experienced in assisting customers, responding to enquiries, explaining products, and supporting a positive customer experience through my roles at Cash Crusaders and Property Yans.</p>
+            </article>
+            <article class="value-card">
+              <div class="number">02</div>
+              <h3>Administrative Support</h3>
+              <p>Developed organisational, communication, and coordination skills through my volunteer work as an Administrative Secretary at Social Justice Coalition and my Virtual Assistant training with ALX Africa.</p>
+            </article>
+            <article class="value-card">
+              <div class="number">03</div>
+              <h3>Digital & AI Readiness</h3>
+              <p>Building digital workplace skills through my Virtual Assistant certification and Google AI Essentials learning, with an interest in using technology and AI tools to support efficient work.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="dark-panel" id="experience">
+        <div class="section-inner">
+          <div class="section-kicker">Career journey</div>
+          <h2>Work experience.</h2>
+          <p class="about-text">A selection of my professional and volunteer experience, ordered from most recent to oldest.</p>
+          <div class="experience-list">
+            <article class="experience-item">
+              <div class="experience-date">Nov 2024 – Jun 2026</div>
+              <div>
+                <h3>Salesperson</h3>
+                <p class="experience-company">Cash Crusaders</p>
+                <p class="experience-description">Supported customers with product enquiries and sales, helping create a positive in-store shopping experience.</p>
+              </div>
+            </article>
+            <article class="experience-item">
+              <div class="experience-date">May 2025 – Sep 2025</div>
+              <div>
+                <h3>Remote Customer Service Agent</h3>
+                <p class="experience-company">Property Yans</p>
+                <p class="experience-description">Assisted customers remotely, responding to enquiries and providing helpful service and support.</p>
+              </div>
+            </article>
+            <article class="experience-item">
+              <div class="experience-date">Feb 2021 – Mar 2023</div>
+              <div>
+                <h3>Administrative Secretary (Volunteer)</h3>
+                <p class="experience-company">Social Justice Coalition</p>
+                <p class="experience-description">Provided administrative and secretarial support to help keep communication, records, and day-to-day coordination organised.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="dark-panel" id="certifications">
+        <div class="section-inner">
+          <div class="section-kicker">Professional development</div>
+          <h2>Certifications.</h2>
+          <p class="about-text">Courses and certifications that reflect my commitment to building practical skills and continuing to learn.</p>
+          <div class="certification-grid">
+            <article class="certification-card">
+              <div class="certification-icon" aria-hidden="true">✦</div>
+              <div class="certification-date">October 2026</div>
+              <h3>Google AI Essentials</h3>
+              <p class="certification-provider">CAPACITI</p>
+              <p class="experience-description">Certificate in foundational artificial intelligence concepts and practical AI use.</p>
+            </article>
+            <article class="certification-card">
+              <div class="certification-icon" aria-hidden="true">✧</div>
+              <div class="certification-date">October 2024</div>
+              <h3>Virtual Assistant Certificate</h3>
+              <p class="certification-provider">ALX Africa</p>
+              <p class="experience-description">Training in virtual assistance and the skills needed to support remote administrative work.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="section-inner">
+          <div class="section-kicker">Contact</div>
+          <h2>Let’s connect.</h2>
+          <p class="contact-lead">Have an opportunity, a question, or simply want to connect? Reach out using the details below.</p>
+          <div class="contact-grid">
+            <a class="contact-card" href="tel:+27613083209">
+              <span class="contact-icon" aria-hidden="true">☎</span>
+              <span>
+                <span class="contact-label">Cellphone</span>
+                <span class="contact-value">061 308 3209</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-card" href="mailto:sibongilengconde@gmail.com" aria-label="Email Sibongile Khanyisa Ngconde">
+              <span class="contact-icon" aria-hidden="true">✉</span>
+              <span>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">sibongilengconde@gmail.com</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/sibongile-ngconde-51616132b" target="_blank" rel="noopener noreferrer" aria-label="Open Sibongile Khanyisa Ngconde's LinkedIn profile in a new tab">
+              <span class="contact-icon" aria-hidden="true">in</span>
+              <span>
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">Connect with me</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year">2026</span> <span>Sibongile Khanyisa Ngconde</span>. Made with purpose.</footer>
+  </div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
